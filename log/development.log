@@ -83,3 +83,35 @@ Migrating to CreateMovies (20111119180638)
   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("created_at", "description", "rating", "release_date", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 21 Jul 2013 21:27:37 UTC +00:00], ["description", nil], ["rating", "PG"], ["release_date", Fri, 05 Nov 2004 00:00:00 UTC +00:00], ["title", "The Incredibles"], ["updated_at", Sun, 21 Jul 2013 21:27:37 UTC +00:00]]
   [1m[35mSQL (0.5ms)[0m  INSERT INTO "movies" ("created_at", "description", "rating", "release_date", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Sun, 21 Jul 2013 21:27:37 UTC +00:00], ["description", nil], ["rating", "PG"], ["release_date", Fri, 12 Jun 1981 00:00:00 UTC +00:00], ["title", "Raiders of the Lost Ark"], ["updated_at", Sun, 21 Jul 2013 21:27:37 UTC +00:00]]
   [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "movies" ("created_at", "description", "rating", "release_date", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 21 Jul 2013 21:27:37 UTC +00:00], ["description", nil], ["rating", "G"], ["release_date", Wed, 21 Jun 2000 00:00:00 UTC +00:00], ["title", "Chicken Run"], ["updated_at", Sun, 21 Jul 2013 21:27:37 UTC +00:00]]
+
+
+Started GET "/assets/rails.png" for 192.168.2.8 at 2013-07-21 19:14:38 -0400
+Served asset /rails.png - 200 OK (2ms)
+
+
+Started GET "/movies" for 192.168.2.8 at 2013-07-21 19:15:02 -0400
+  Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+Rendered movies/index.html.haml within layouts/application (53.1ms)
+Cache for Asset (application.js) is stale
+/home/ubuntu/.rvm/gems/ruby-1.9.3-p448/gems/jquery-rails-1.0.19/vendor/assets/javascripts/jquery.js isn't in paths: /home/andrey/dev/hw2/app/assets/images, /home/andrey/dev/hw2/app/assets/javascripts, /home/andrey/dev/hw2/app/assets/stylesheets, /home/andrey/.rvm/gems/ruby-1.9.3-p448/gems/jquery-rails-1.0.19/vendor/assets/javascripts
+Compiled application.js  (2ms)  (pid 20737)
+Compiled jquery.js  (2ms)  (pid 20737)
+Compiled jquery_ujs.js  (0ms)  (pid 20737)
+Completed 200 OK in 130ms (Views: 127.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 192.168.2.8 at 2013-07-21 19:15:08 -0400
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 192.168.2.8 at 2013-07-21 19:15:08 -0400
+Served asset /jquery.js - 200 OK (9ms)
+
+
+Started GET "/assets/application.js?body=1" for 192.168.2.8 at 2013-07-21 19:15:13 -0400
+Served asset /application.js - 200 OK (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 192.168.2.8 at 2013-07-21 19:15:18 -0400
+Served asset /jquery_ujs.js - 200 OK (4ms)
