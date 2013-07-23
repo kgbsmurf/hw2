@@ -1,6 +1,6 @@
-o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1374515372.1737232:@value{	I"length:EFi!I"digest;
-F"%d8b1a46a7ac0f6a5b954eb847ff7f110I"source;
-FI"!html, body {
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1374557178.905804:@value{	I"length:EFiZI"digest;
+F"%ded083698a22725dc4872c041c7fbb84I"source;
+FI"Zhtml, body {
   margin: 0;
   padding: 0;
   background: White;
@@ -61,6 +61,11 @@ form label {
   font-weight: bold;
   color: maroon;
 }
+
+table#movies th.hilite {
+  background-color: yellow;
+}
+
 ;
 FI"_version;
-F"%06c201ea8fb231691cf89bcfb218f349
+F"%99ad3732cd9441b294d8b2f984fdeaab
