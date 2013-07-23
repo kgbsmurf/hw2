@@ -7,7 +7,8 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+	@sort = params[:sort]  # will get title or date value
+    @movies = Movie.order(@sort)
   end
 
   def new
