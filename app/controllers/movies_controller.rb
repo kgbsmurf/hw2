@@ -7,7 +7,8 @@ class MoviesController < ApplicationController
   end
 
   def index
-	@sort = params[:sort]  # will get title or date value
+    @sort = params[:sort]  # will get title or date value
+    @all_ratings = Movie.select(:rating).group(:rating).map(&:rating)
     @movies = Movie.order(@sort)
   end
 
