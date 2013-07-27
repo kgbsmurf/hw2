@@ -7,10 +7,15 @@ class MoviesController < ApplicationController
   end
 
   def index
+    params.merge!(session.except(:session_id,:_csrf_token))
+#  debugger
     @sort = params[:sort]  # will get title or date value
     @all_ratings = Movie.select(:rating).group(:rating).map(&:rating)
     @selected_ratings = params[:ratings].present? ? params[:ratings].keys : @all_ratings
     @movies = Movie.where(rating: @selected_ratings).order(@sort)
+    expected_params = [:rating, :sort]
+    #params.has_key?
+    session.merge!(params)
   end
 
   def new
