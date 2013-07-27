@@ -9,7 +9,8 @@ class MoviesController < ApplicationController
   def index
     @sort = params[:sort]  # will get title or date value
     @all_ratings = Movie.select(:rating).group(:rating).map(&:rating)
-    @movies = Movie.order(@sort)
+    @selected_ratings = params[:ratings].present? ? params[:ratings].keys : @all_ratings
+    @movies = Movie.where(rating: @selected_ratings).order(@sort)
   end
 
   def new
