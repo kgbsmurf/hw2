@@ -7,24 +7,18 @@ class MoviesController < ApplicationController
   end
 
   def index
-#	  debugger
-    redirect_to session.except(:commit, :session_id,:_csrf_token) unless (params.keys & ["sort","ratings"]).any?
-    session.merge!(params)
-   params.merge!(session.except(:session_id,:_csrf_token))
+   expected_params = ["ratings", "sort"]
+   if !(params.keys & expected_params).any?
+     redirect_to session.except(:commit, :session_id,:_csrf_token) if (session.keys & expected_params).any?	
+   end
+      session.merge!(params)
+    params.merge!(session.except(:session_id,:_csrf_token))
     
     @sort = params[:sort]  # will get title or date value
     @all_ratings = Movie.select(:rating).group(:rating).map(&:rating)
     @selected_ratings = params[:ratings].present? ? params[:ratings].keys : @all_ratings
     @movies = Movie.where(rating: @selected_ratings).order(@sort)
-    expected_params = [:rating, :sort]
-    #params.has_key?
     session.merge!(params)
-    #if params != session.except(:commit, :session_id,:_csrf_token) 
-#	 params.merge!(session.except(:commit, :session_id,:_csrf_token))
-#	 redirect_to params
-	 #debugger
- #   end
-   # redirect_to session.except(:commit, :session_id,:_csrf_token) if (params.keys & [:sort,:rating]).any?
   end
 
   def new
