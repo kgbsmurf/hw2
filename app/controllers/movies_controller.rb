@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
 
   def index
     session.merge!(params)
-    params.merge!(session.except(:session_id,:_csrf_token))
+    #params.merge!(session.except(:session_id,:_csrf_token))
 #  debugger
     @sort = params[:sort]  # will get title or date value
     @all_ratings = Movie.select(:rating).group(:rating).map(&:rating)
@@ -17,6 +17,11 @@ class MoviesController < ApplicationController
     expected_params = [:rating, :sort]
     #params.has_key?
     session.merge!(params)
+    if params != session.except(:session_id,:_csrf_token) 
+	 params.merge!(session.except(:session_id,:_csrf_token))
+	 redirect_to params
+	 #debugger
+    end
   end
 
   def new
@@ -26,7 +31,7 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.create!(params[:movie])
     flash[:notice] = "#{@movie.title} was successfully created."
-    redirect_to movies_path
+    redirect_to params
   end
 
   def edit
@@ -44,7 +49,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @movie.destroy
     flash[:notice] = "Movie '#{@movie.title}' deleted."
-    redirect_to movies_path
+    redirect_to movie_path(@movie)
   end
 
 end
