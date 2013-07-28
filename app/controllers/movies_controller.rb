@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def index
+    session.merge!(params)
     params.merge!(session.except(:session_id,:_csrf_token))
 #  debugger
     @sort = params[:sort]  # will get title or date value
